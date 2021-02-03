@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Intrude</title>
+    <style>
+        iframe {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        button {
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            // document.domain = "www.wask.co";
+            var iframe = document.getElementsByTagName('iframe');
+            var btn = document.getElementsByTagName("button");
+            btn[0].onclick = () => {
+                var winners = iframe[0].contentWindow.document.getElementsByClassName('winner');
+                for (var winner of winners) {
+                    if (winner.classList.contains('blur')) {
+                        winner.classList.remove('blur');
+                    }
+                }
+            }
+        });
+    </script>
+</head>
+
+<body style="margin:0;padding:0;">
+    <button>Bye Bye Blur</button>
+    <iframe src="https://www.wask.co/instagram-giveaway-comment-winner-picker" crossorigin="anonymous">
+    </iframe>
+</body>
+
+</html>
